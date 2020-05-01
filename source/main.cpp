@@ -14,5 +14,6 @@ int main() {
     orcs_team.Print();
     hobbits_team.Print();
     humans_team.Print();
+    std::cout << "Program runnig succes!!!" << "\n";
     return 0;
 }
