@@ -33,9 +33,3 @@ jobs:
             cd build/executable_files
             ./LOTR
             ./LOTR_tests
-
-    - name: UploadArtifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: Distributive
-        path: build/executable_files/exe
