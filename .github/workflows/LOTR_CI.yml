@@ -30,7 +30,7 @@ jobs:
 
     - name: Run prog & tests
       run: |
-            cd executable_files
+            cd build/executable_files
             ./LOTR
             ./LOTR_tests
 
