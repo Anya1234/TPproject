@@ -37,5 +37,5 @@ add_library(${BINARY}_lib STATIC
     )
 
 install(TARGETS ${BINARY}
-        RUNTIME DESTINATION  ${CMAKE_INSTALL_PREFIX}/bin
+        RUNTIME DESTINATION  ${CMAKE_INSTALL_PREFIX}
         )

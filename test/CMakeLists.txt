@@ -1,5 +1,5 @@
 set(BINARY ${CMAKE_PROJECT_NAME}_tests)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${LOTR_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX})
 
 add_executable(${BINARY} main.cpp 
                          hobbits_creating_test.cpp
