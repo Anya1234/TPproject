@@ -16,8 +16,8 @@ class Creature {
 protected:
     double ab_negotiate;
     double ab_fight;
-    double HP;
-    double max_HP;
+    int HP;
+    int max_HP;
     double power;
     std::string name;
     CREATURE_TYPE type;
@@ -25,23 +25,24 @@ protected:
     bool ifalive = true;
 public:
     Creature (double ab_negotiate, double ab_fight,
-              double HP, double max_HP,
+              int HP, int max_HP,
               double power, double damage, std::string name, CREATURE_TYPE type);
 
     double Get_ab_negotiate() const;
     double Get_ab_fight() const;
-    double Get_HP() const;
-    double Get_max_HP()const;
+    int Get_HP() const;
+    int Get_max_HP()const;
     double Get_power() const;
     std::string Get_name() const;
     CREATURE_TYPE Get_type() const;
     double Get_damage() const;
 
-    void check_is_alive();
+    virtual std::string Print_type() const;
+    bool check_is_alive();
     virtual void reduce_hp() {}
     virtual void change_power(bool is_improves) {}
-    void attack(Creature& other);
-    bool negotiate(Creature& other);
+    bool attack(std::shared_ptr<Creature> other);
+    bool negotiate(std::shared_ptr<Creature> other);
     virtual ~Creature() {}
 };
 
@@ -49,6 +50,7 @@ public:
 class Hobbit: public Creature {
 public:
     Hobbit(std::string name = "Bilbo");
+    std::string Print_type() const override;
 private:
     void reduce_hp() override;
 };
@@ -57,6 +59,7 @@ private:
 class Orc: public Creature {
 public:
     Orc(std::string name = "Azog");
+    std::string Print_type() const override;
 private:
     void reduce_hp() override;
 };
@@ -65,6 +68,6 @@ private:
 class Human: public Creature {
 public:
     Human(std::string name = "Beor");
+    std::string Print_type() const override;
     void reduce_hp() override;
 };
-

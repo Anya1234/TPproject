@@ -9,14 +9,13 @@
 class Team {
 private:
     size_t quantity;
-    CREATURE_TYPE type;
-    std::vector<std::shared_ptr<Creature>> creatures;
-    std::shared_ptr<Creatures_Factory> hobbit_factory;
-    std::shared_ptr<Creatures_Factory> orc_factory;
-    std::shared_ptr<Creatures_Factory> human_factory;
+    std::vector< std::shared_ptr<Creature> > creatures;
 public:
-    Team(CREATURE_TYPE type, size_t quantity = 1);
+    Team();
+    void AddPerson(std::shared_ptr<Creature> person);
+    std::shared_ptr<Creature> GetPerson(int number);
     size_t Get_quantity();
-    CREATURE_TYPE Get_type();
+    void PrintTeam();
+    int Get_HP();
     void Print();
 };
