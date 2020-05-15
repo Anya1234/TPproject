@@ -5,8 +5,8 @@ std::shared_ptr<Creatures_Factory> Location::orc_factory = std::make_shared<Orcs
 std::shared_ptr<Creatures_Factory> Location::hobbit_factory = std::make_shared<Hobbit_Factory>();
 std::shared_ptr<Creatures_Factory> Location::human_factory = std::make_shared<Human_Factory>();
 
-Location::Location(std::string& location_name, 
-                   std::string& message, 
+Location::Location(std::string location_name, 
+                   std::string message, 
                    std::vector<CREATURE_TYPE>& types) : 
     location_name(location_name),
     message(message) {
@@ -44,4 +44,9 @@ std::string Location::GetName() {
 
 void Location::AddRoad(std::shared_ptr<Location> location) {
     roads_to.push_back(location);
+}
+
+
+const std::vector<std::shared_ptr<Location> >& Location::GetRoads() {
+    return roads_to;
 }

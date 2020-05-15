@@ -8,6 +8,7 @@ add_executable(${BINARY} main.cpp
                          gendalf_creating_test.cpp
                          dragon_creating_test.cpp
                          team_testing.cpp
+                         fight_testing.cpp
               )         
 
 add_test(NAME ${BINARY} COMMAND ${BINARY})

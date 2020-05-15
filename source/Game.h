@@ -4,10 +4,8 @@
 #include "creature_factory.h"
 #include "Dragon.h"
 #include "Gendalf.h"
-#include "Gendalf_types.h"
 #include "Team.h"
 #include "Location.h"
-#include "Locations.h"
 
 
 class Game {
@@ -20,6 +18,7 @@ private:
     std::shared_ptr<Creature> Greeting();
     bool GameProcess();
     void NextLocation();
+    bool CanCallGendalf();
     std::string greeting;
     std::string player_name;
     std::shared_ptr<Team> player_team;

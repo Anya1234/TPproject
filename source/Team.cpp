@@ -1,9 +1,7 @@
 #include "Team.h"
 
-Team::Team() {}
-
 size_t Team::Get_quantity() {
-    return quantity;
+    return creatures.size();
 }
 
 void Team::Print() {
@@ -18,6 +16,10 @@ void Team::AddPerson(std::shared_ptr<Creature> person) {
 
 std::shared_ptr<Creature> Team::GetPerson(int number) {
     return creatures[number];
+}
+
+void Team::RemovePerson(int number) {
+    creatures.erase(creatures.begin() + number);
 }
 
 int Team::Get_HP() {
@@ -35,7 +37,7 @@ void Team::PrintTeam() {
         if (i % 5 == 0) {
             std::cout << "\n";
         }
-        std::cout << i << " " << creatures[i] << "; ";
+        std::cout << i << " " << creatures[i]->Print_type() << " - " <<creatures[i]->Get_name() << "; ";
     }
-    std::cout << "Введи номер: ";
+    std::cout << "\nВведи номер: ";
 }

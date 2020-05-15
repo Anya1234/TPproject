@@ -4,18 +4,12 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LOTR_SOURCE_DIR}/lib)
 
 add_executable(${BINARY}
     main.cpp 
-    Creatures.h 
-    interface_factory.h 
-    Creatures.cpp 
-    Dragon.h 
+    Creatures.cpp
     Dragon.cpp
-    Gendalf.h 
-    Gendalf_types.h 
-    Gendalf.cpp 
-    Gendalf_types.cpp
-    creature_factory.h 
+    Location.cpp
+    Game.cpp
+    Gendalf.cpp
     creature_factory.cpp
-    Team.h
     Team.cpp
     )
 
@@ -27,9 +21,11 @@ add_library(${BINARY}_lib STATIC
     Dragon.h 
     Dragon.cpp
     Gendalf.h 
-    Gendalf_types.h 
-    Gendalf.cpp 
-    Gendalf_types.cpp
+    Location.h
+    Location.cpp
+    Game.h
+    Game.cpp
+    Gendalf.cpp
     creature_factory.h 
     creature_factory.cpp
     Team.h

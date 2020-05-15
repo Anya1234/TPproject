@@ -11,7 +11,7 @@ Dragon* Dragon::getInstance() {
     return p_instance;
 }
 
-int Dragon::HP = 100000;
+int Dragon::HP = 10000;
 
 double Dragon::power = 1000;
 
@@ -21,4 +21,8 @@ double Dragon::get_HP() {
 
 double Dragon::get_power() {
     return power;
+}
+
+void Dragon::reduce_HP() {
+    HP -= 1000;
 }

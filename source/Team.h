@@ -11,9 +11,10 @@ private:
     size_t quantity;
     std::vector< std::shared_ptr<Creature> > creatures;
 public:
-    Team();
+    Team() = default;
     void AddPerson(std::shared_ptr<Creature> person);
     std::shared_ptr<Creature> GetPerson(int number);
+    void RemovePerson(int number);
     size_t Get_quantity();
     void PrintTeam();
     int Get_HP();

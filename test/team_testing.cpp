@@ -6,13 +6,24 @@
 
 
 TEST(TEAM_TEST, T_6) {
-    Team orcs_team = Team(ORC, 10);
-    Team hobbits_team = Team(HOBBIT, 15);
-    Team humans_team = Team(HUMAN, 20);
-    EXPECT_EQ(orcs_team.Get_type(), ORC);
-    EXPECT_EQ(orcs_team.Get_quantity(), 10);
-    EXPECT_EQ(hobbits_team.Get_type(), HOBBIT);
-    EXPECT_EQ(hobbits_team.Get_quantity(), 15);
-    EXPECT_EQ(humans_team.Get_type(), HUMAN);
-    EXPECT_EQ(humans_team.Get_quantity(), 20);
+    std::shared_ptr<Creatures_Factory> orcs_factory = std::make_shared<Orcs_Factory>();
+    std::shared_ptr<Creature> orc = orcs_factory->Create_Creature();
+    std::shared_ptr<Creatures_Factory> humans_factory = std::make_shared<Human_Factory>();
+    std::shared_ptr<Creature> human = humans_factory->Create_Creature();
+    std::shared_ptr<Creatures_Factory> hobbits_factory = std::make_shared<Hobbit_Factory>();
+    std::shared_ptr<Creature> hobbit = hobbits_factory->Create_Creature();
+    Team test_team;
+
+    test_team.AddPerson(hobbit);
+    test_team.AddPerson(human);
+    test_team.AddPerson(orc);
+
+    EXPECT_EQ(test_team.Get_quantity(), 3);
+    EXPECT_EQ(test_team.Get_HP(), hobbit->Get_HP() + human->Get_HP() + orc->Get_HP());
+    EXPECT_EQ(test_team.GetPerson(1), human);
+    test_team.RemovePerson(0);
+    EXPECT_EQ(test_team.Get_quantity(), 2);
+    EXPECT_EQ(test_team.Get_HP(), human->Get_HP() + orc->Get_HP());
+    EXPECT_EQ(test_team.GetPerson(1), orc);
+    EXPECT_EQ(test_team.GetPerson(0), human);
 }

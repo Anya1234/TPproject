@@ -18,7 +18,6 @@ Creature::Creature(double ab_negotiate, double ab_fight,
 
 bool Creature::check_is_alive() {
     if (HP <= 0) {
-        std::cout << name << " is dead " << std::endl;
         ifalive = false;
         return false;
     }
@@ -26,17 +25,16 @@ bool Creature::check_is_alive() {
 }
 
 bool Creature::attack(std::shared_ptr<Creature> other) {
-    int using_rand = rand()%100;
-    double chance = static_cast<double>(using_rand)/100;
-    int probability = power*ab_fight;
+    srand(time(NULL));
+    int using_rand = rand() % 100;
+    double chance = static_cast<double>(using_rand) / 100;
+    double probability = power * ab_fight;
     if (probability >= chance) {
-        std::cout << "Attack by " << name << " succeed" << std::endl;
         other->reduce_hp();
-        power +=1;
+        power += 0.01;
         return true;
     }
     else {
-        std::cout << "Attack by " << name << " failed" << std::endl;
         reduce_hp();
         return false;
     }
@@ -44,21 +42,23 @@ bool Creature::attack(std::shared_ptr<Creature> other) {
 }
 
 bool Creature::negotiate(std::shared_ptr<Creature> other) {
-    int using_rand = rand()%100;
+    int using_rand = rand() % 100;
     double chance = static_cast<double>(using_rand)/100;
-    int probability = ab_negotiate * HP/max_HP;
+    double probability = ab_negotiate * static_cast<double>(HP) / static_cast<double>(max_HP);
+    
     if (probability >= chance) {
-       std::cout << name << " reached agreement with " << other->name << std::endl;
-       std::cout << other->name << "will be glad to join you" << std::endl;
+       std::cout << name << " договорился с " << other->name << std::endl;
+       std::cout << other->name << " будет рад сражаться за вас!" << std::endl;
        return true;
     }
     else {
-        std::cout << name << " only made " << other->name <<  " mad" << std::endl;
-        std::cout << "He is going to kill " << name <<  std::endl;
+        std::cout << name << " только вывел из себя  " << other->name << std::endl;
+        std::cout << "Теперь он собирается убить " << name <<  std::endl;
         attack(other);
         return false;
     }
 }
+
 
 double Creature::Get_ab_negotiate() const {
     return ab_negotiate;

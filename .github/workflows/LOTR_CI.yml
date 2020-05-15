@@ -31,5 +31,4 @@ jobs:
     - name: Run prog & tests
       run: |
             cd build/executable_files
-            ./LOTR
             ./LOTR_tests
