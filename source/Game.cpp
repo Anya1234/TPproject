@@ -85,6 +85,7 @@ void Game::NextLocation() {
             continue;
         }
         if (location_num < locations.size()) {
+            current_location = locations[location_num];
             std::shared_ptr<Creature> stranger = locations[location_num]->Get_Creature();
             std::cout << "На пути вам встретился " << stranger->Print_type() << " " << stranger->Get_name() << "\n";
             std::cout << player_name << ", будем сражаться или попробуем договориться?\n";
